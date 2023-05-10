@@ -15,7 +15,7 @@
         <div class="d-flex flex-row flex-column-fluid page">
             @include('layouts.partials.sidebar')
             <!--begin::Wrapper-->
-            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <div class="d-flex flex-column flex-row-fluid wrapper w-100" id="kt_wrapper">
                 @include('layouts.partials.navbar')
                 @yield('content')
                 @include('layouts.partials.footer')
