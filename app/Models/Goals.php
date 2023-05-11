@@ -14,6 +14,9 @@ class Goals extends Model
     ];
 
     public function getImageAttribute(){
-        return asset('uploads/user'). '/'. $this->attributes['image'];
+        if ($this->attributes['image'] == null) {
+        return '<img width="50px" src="'.asset('uploads/goals/default.jpg').'"/>';
+        }
+        return '<img width="50px" src="'.asset('uploads/goals'). '/'. $this->attributes['image'].'"/>';
     }
 }

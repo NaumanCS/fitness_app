@@ -64,18 +64,18 @@
 </script>
 <!--end::Global Config-->
 <!--begin::Global Theme Bundle(used by all pages)-->
-<script src="{{asset('admin')}}/assets/plugins/global/plugins.bundle.js"></script>
-<script src="{{asset('admin')}}/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-<script src="{{asset('admin')}}/assets/js/scripts.bundle.js"></script>
+<script src="{{ asset('admin') }}/assets/plugins/global/plugins.bundle.js"></script>
+<script src="{{ asset('admin') }}/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="{{ asset('admin') }}/assets/js/scripts.bundle.js"></script>
 <!--end::Global Theme Bundle-->
 <!--begin::Page Vendors(used by this page)-->
 {{-- <script src="{{asset('admin')}}/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script> --}}
-<script src="{{asset('admin')}}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="{{ asset('admin') }}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
-<script src="{{asset('admin')}}/assets/js/pages/widgets.js"></script>
+<script src="{{ asset('admin') }}/assets/js/pages/widgets.js"></script>
 <!--end::Page Scripts-->
-<script src="{{asset('admin')}}/assets/js/pages/crud/datatables/basic/paginations.js"></script>
+<script src="{{ asset('admin') }}/assets/js/pages/crud/datatables/basic/paginations.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.js"></script>
 
@@ -117,10 +117,35 @@
                 swal.fire("Deleted!", "Item has been deleted.", "success");
                 setTimeout(() => {
                     window.location.reload();
-               }, 2000);
+                }, 1000);
             }
             if ("cancel" === e.dismiss)
                 swal.fire("Cancelled", "Item is safe :)", "error");
         });
+    });
+</script>
+
+<script>
+    // Class definition
+
+    var KTSummernoteDemo = function() {
+        // Private functions
+        var demos = function() {
+            $('.summernote').summernote({
+                height: 150
+            });
+        }
+
+        return {
+            // public functions
+            init: function() {
+                demos();
+            }
+        };
+    }();
+
+    // Initialization
+    jQuery(document).ready(function() {
+        KTSummernoteDemo.init();
     });
 </script>

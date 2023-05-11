@@ -16,19 +16,21 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
             $table->bigInteger('goal_id')->nullable();
+            $table->bigInteger('active_id')->nullable();
+            $table->bigInteger('diet_id')->nullable();
+            $table->bigInteger('intensity_id')->nullable();
             $table->string('gender')->nullable();
             $table->string('age')->nullable();
             $table->string('height')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->string('height_unit')->nullable();
             $table->string('weight')->nullable();
             $table->string('weight_unit')->nullable();
             $table->string('target_weight')->nullable();
             $table->string('target_weight_unit')->nullable();
-            $table->bigInteger('active_id')->nullable();
-            $table->bigInteger('intensity_id')->nullable();
-            $table->bigInteger('diet_id')->nullable();
-            $table->string('phone')->unique();
-            $table->string('email')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->string('image')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');

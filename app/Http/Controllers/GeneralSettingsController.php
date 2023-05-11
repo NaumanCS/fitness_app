@@ -2,54 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Goals;
+use App\Models\GeneralSettings;
 use Illuminate\Http\Request;
 
-class GoalsController extends Controller
+class GeneralSettingsController extends Controller
 {
-    public function index(){
-        $obj = Goals::get();
-        return view('pages.goals.index', compact('obj'));
-    }
-
     public function create(Request $request, $id){
         $update_id = 0;
         $obj = array();
 
         if ($id > 0) {
             $update_id = $id;
-            $obj = Goals::where('id', $update_id)->first();
+            $obj = GeneralSettings::where('id', $update_id)->first();
         }
-        return view('pages.goals.create', get_defined_vars());
+        return view('pages.general-setting.create', get_defined_vars());
     }
 
     public function submit(Request $request, $id){
-        // dd($request);
         $update_id = 0;
         if($id > 0){
-            $goal = Goals::where('id', $id)->update([
+            $goal = GeneralSettings::where('id', $id)->update([
                 'title' => $request->title,
             ]);
         }
         else{
-            $goal = Goals::create([
+            $goal = GeneralSettings::create([
                 'title' => $request->title,
             ]);
         }
-
         if ($request->image) {
             $imageName = $request->file('image')->getClientOriginalName();
             $image = $request->file('image');
             $image = rand(0, 9999) . time() . '.' . $request->image->extension();
-            $request->file('image')->move(public_path('uploads/goals'), $image);
+            $request->file('image')->move(public_path('uploads/general-settings'), $image);
             $goal->image = $image;
             $goal->update();
         }
-        $goals = Goals::get();
-        return redirect()->route('goals.index');
-    }
-    public function delete(Request $request){
-        Goals::where('id', $request->id)->delete();
-        echo 1;
+        $goals = GeneralSettings::get();
+        return redirect()->route('general.settings.create');
     }
 }

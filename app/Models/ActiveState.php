@@ -12,4 +12,11 @@ class ActiveState extends Model
     protected $fillable = [
         'title', 'description', 'image',
     ];
+
+    public function getImageAttribute(){
+        if ($this->attributes['image'] == null) {
+        return '<img width="50px" src="'.asset('uploads/active-state/default.jpg').'"/>';
+        }
+        return '<img width="50px" src="'.asset('uploads/active-state'). '/'. $this->attributes['image'].'"/>';
+    }
 }

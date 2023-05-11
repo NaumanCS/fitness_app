@@ -10,7 +10,8 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">All fitness goals list added in the app for users</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">List to all intensities added by the admin for the user
+                        </h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->
@@ -27,11 +28,11 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-4">
                         <div class="card-title">
-                            <h3 class="card-label">Fitness Goals</h3>
+                            <h3 class="card-label">Intensity</h3>
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Button-->
-                            <a href="{{route('goals.create', $update_id=0)}}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('about.create', $update_id = 0) }}" class="btn btn-primary font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -55,26 +56,25 @@
                             <thead>
                                 <tr>
                                     <th>Record ID</th>
-                                    <th>Image</th>
-                                    <th>Title</th>
+                                    <th>Heading</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($obj as $goal)
-                                <tr>
-                                    <td>{!! $goal->id !!}</td>
-                                    <td>{!! $goal->image !!}</td>
-                                    <td>{!! $goal->title !!}</td>
-                                    <td class="d-flex">
-                                            <a class="mx-2 pt-1" href="{{route('goals.create', $goal->id)}}">
+                                @foreach ($obj as $row)
+                                    <tr>
+                                        <td>{!! $row->id !!}</td>
+                                        <td>{!! $row->heading !!}</td>
+                                        <td class="d-flex">
+                                            <a class="mx-2 pt-1" href="{{ route('about.create', $row->id) }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="delete_action mx-2 pt-1" rel="{!!$goal->id ?? '' !!}" href="javascript:void(0)">
+                                            <a class="delete_action mx-2 pt-1" rel="{!! $row->id ?? '' !!}"
+                                                href="javascript:void(0)">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -89,4 +89,3 @@
     </div>
     <!--end::Content-->
 @endsection
-
