@@ -79,6 +79,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/dropify/dist/js/dropify.min.js"></script>
+
 
 @yield('injected-scripts')
 
@@ -148,4 +150,7 @@
     jQuery(document).ready(function() {
         KTSummernoteDemo.init();
     });
+</script>
+<script>
+    $('.dropify').dropify();
 </script>

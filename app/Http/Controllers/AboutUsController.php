@@ -27,21 +27,18 @@ class AboutUsController extends Controller
 
     public function submit(Request $request, $id)
     {
-        // dd($request);
         $update_id = 0;
         if ($id > 0) {
             $goal = AboutUs::where('id', $id)->update([
-                'title' => $request->title,
-                'description' => $request->description,
+                'heading' => $request->heading,
+                'content' => $request->content,
             ]);
         } else {
             $goal = AboutUs::create([
-                'title' => $request->title,
-                'description' => $request->description,
+                'heading' => $request->heading,
+                'content' => $request->content,
             ]);
         }
-
-        $about = AboutUs::get();
         return redirect()->route('about.index');
     }
     public function delete(Request $request)

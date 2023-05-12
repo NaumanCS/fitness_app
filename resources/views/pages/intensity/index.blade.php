@@ -46,7 +46,7 @@
                                         </g>
                                     </svg>
                                     <!--end::Svg Icon-->
-                                </span>Add New Goal</a>
+                                </span>Add New Intensity</a>
                             <!--end::Button-->
                         </div>
                     </div>

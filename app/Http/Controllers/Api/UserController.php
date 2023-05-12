@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
+use App\Models\Faq;
+use App\Models\GeneralSettings;
+use App\Models\Policy;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,5 +44,15 @@ class UserController extends Controller
 
         $user->update();
         return ['status' => true, 'message' => 'Profile Updated Successfully', 'data' => $user];
+    }
+
+    public function get_admin_settings()
+    {
+        $aboutUs = AboutUs::get();
+        $policies = Policy::get();
+        $faqs = Faq::get();
+        $generalSettings = GeneralSettings::get();
+
+        return ['status' => true, 'message' => "Admin added data", 'aboutUs' => $aboutUs, 'policies' => $policies, 'faqs' => $faqs, 'generalSettings' => $generalSettings];
     }
 }

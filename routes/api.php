@@ -19,6 +19,9 @@ use App\Http\Controllers\Api\UserController;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/signup', [AuthController::class, 'register']);
 
+// Admin Settings
+Route::get('/getAdminSettings', [UserController::class, 'get_admin_settings']);
+
 Route::group(['middleware'=> 'auth:sanctum'], function(){
     Route::post('/change/password', [AuthController::class, 'changePassword']);
     Route::post('/update/user', [UserController::class, 'update_profile']);

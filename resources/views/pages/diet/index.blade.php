@@ -45,7 +45,7 @@
                                         </g>
                                     </svg>
                                     <!--end::Svg Icon-->
-                                </span>Add New Goal</a>
+                                </span>Add New Diet</a>
                             <!--end::Button-->
                         </div>
                     </div>

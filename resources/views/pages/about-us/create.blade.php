@@ -6,11 +6,11 @@
                 <div class="card card-custom">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Add new Goal for the User
+                            Add new About Us Page Content
                         </h3>
                     </div>
                     <!--begin::Form-->
-                    <form class="form" method="POST" action="{{ route('intensity.submit', $update_id) }}"
+                    <form class="form" method="POST" action="{{ route('about.submit', $update_id) }}"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
@@ -20,9 +20,9 @@
                                     value="{!! $obj->heading ?? '' !!}" />
                             </div>
                             <div class="form-group row">
-                                <label class="col-form-label col-lg-12 col-sm-12">Default Demo</label>
+                                <label class="col-form-label col-lg-12 col-sm-12">Content</label>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="summernote" id="kt_summernote_1"></div>
+                                    <textarea class="summernote" id="kt_summernote_1" name="content"></textarea>
                                 </div>
                             </div>
                             <div class="card-footer">

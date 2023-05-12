@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // General Setting Crud
     Route::get('/general/settings', [GeneralSettingsController::class, 'create'])->name('general.settings.create');
-    Route::post('/general/settings/submit/{id}', [GeneralSettingsController::class, 'submit'])->name('general.settings.submit');
+    Route::post('/general/settings/submit', [GeneralSettingsController::class, 'submit'])->name('general.settings.submit');
 
     // About Us Crud
     Route::get('/about-us/list', [AboutUsController::class, 'index'])->name('about.index');

@@ -10,24 +10,22 @@
                         </h3>
                     </div>
                     <!--begin::Form-->
-                    <form class="form" method="POST" action="{{route('intensity.submit', $update_id)}}" enctype="multipart/form-data">
+                    <form class="form" method="POST" action="{{ route('faq.submit', $update_id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Enter Goal Title Here:" value="{!! $obj->title ?? '' !!}" />
+                                <label>Question</label>
+                                <input type="text" name="question" class="form-control"
+                                    placeholder="Question Here:" value="{!! $obj->question ?? '' !!}" />
                             </div>
                             <div class="form-group">
-                                <label>Time</label>
-                                <input type="text" name="time" class="form-control" placeholder="Enter the amount of time" value="{!! $obj->time ?? '' !!}" />
+                                <label for="exampleTextarea">Asnwer</label>
+                                <textarea class="form-control" name="answer" id="exampleTextarea" placeholder="Answer here:" rows="3">{!! $obj->answer ?? '' !!}</textarea>
                             </div>
-                            <div class="form-group">
-                                <label>Calories Burn</label>
-                                <input type="text" name="calories_burn" class="form-control" placeholder="Calories Burn" value="{!! $obj->calories_burn ?? '' !!}" />
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            </div>
                     </form>
                     <!--end::Form-->
                 </div>

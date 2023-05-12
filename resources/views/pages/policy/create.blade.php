@@ -6,28 +6,28 @@
                 <div class="card card-custom">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Add new Goal for the User
+                            Add New Policy Page Content
                         </h3>
                     </div>
                     <!--begin::Form-->
-                    <form class="form" method="POST" action="{{route('intensity.submit', $update_id)}}" enctype="multipart/form-data">
+                    <form class="form" method="POST" action="{{ route('policy.submit', $update_id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Enter Goal Title Here:" value="{!! $obj->title ?? '' !!}" />
+                                <label>Heading</label>
+                                <input type="text" name="heading" class="form-control" placeholder="Enter Heading here:"
+                                    value="{!! $obj->heading ?? '' !!}" />
                             </div>
-                            <div class="form-group">
-                                <label>Time</label>
-                                <input type="text" name="time" class="form-control" placeholder="Enter the amount of time" value="{!! $obj->time ?? '' !!}" />
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-12 col-sm-12">Content</label>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea class="summernote" id="kt_summernote_1" name="content">{!! $obj->content ?? '' !!}</textarea>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Calories Burn</label>
-                                <input type="text" name="calories_burn" class="form-control" placeholder="Calories Burn" value="{!! $obj->calories_burn ?? '' !!}" />
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            </div>
                     </form>
                     <!--end::Form-->
                 </div>

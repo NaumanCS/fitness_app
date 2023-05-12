@@ -88,11 +88,11 @@ class AuthController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return response(['status' => false, 'message' => 'Invalid email or password. Please try again'], 200);
         } else {
-            User::where('id', $user->id)->update([
+            $user = User::where('id', $user->id)->update([
                 'password' => $request->new_password,
             ]);
 
-            return response(['status' => true, 'message' => 'Password Updated Successfully'], 200);
+            return response(['status' => true, 'message' => 'Password Updated Successfully', 'data' => $user], 200);
         }
     }
 }

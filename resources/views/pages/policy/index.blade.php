@@ -10,7 +10,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">List to all intensities added by the admin for the user
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">List of all added about us headings and content
                         </h5>
                         <!--end::Page Title-->
                     </div>
@@ -28,11 +28,11 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-4">
                         <div class="card-title">
-                            <h3 class="card-label">Intensity</h3>
+                            <h3 class="card-label">Legal & Policies</h3>
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Button-->
-                            <a href="{{ route('intensity.create', $update_id = 0) }}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('policy.create', $update_id = 0) }}" class="btn btn-primary font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -46,7 +46,7 @@
                                         </g>
                                     </svg>
                                     <!--end::Svg Icon-->
-                                </span>Add New Goal</a>
+                                </span>Add New Policy Page Content</a>
                             <!--end::Button-->
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                             <thead>
                                 <tr>
                                     <th>Record ID</th>
-                                    <th>Time</th>
-                                    <th>Calories Burn</th>
+                                    <th>Heading</th>
+                                    <th>Content</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -65,10 +65,10 @@
                                 @foreach ($obj as $row)
                                     <tr>
                                         <td>{!! $row->id !!}</td>
-                                        <td>{!! $row->time !!}</td>
-                                        <td>{!! $row->calories_burn !!}</td>
+                                        <td>{!! $row->heading !!}</td>
+                                        <td>{!! $row->content !!}</td>
                                         <td class="d-flex">
-                                            <a class="mx-2 pt-1" href="{{ route('intensity.create', $row->id) }}">
+                                            <a class="mx-2 pt-1" href="{{ route('policy.create', $row->id) }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="delete_action mx-2 pt-1" rel="{!! $row->id ?? '' !!}"
