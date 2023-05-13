@@ -63,6 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/general/settings', [GeneralSettingsController::class, 'create'])->name('general.settings.create');
     Route::post('/general/settings/submit', [GeneralSettingsController::class, 'submit'])->name('general.settings.submit');
 
+    // Dropify
+    Route::post('/general/settings/delete_dropify_image', [GeneralSettingsController::class, 'delete_dropify_image'])->name('delete.dropify.image');
+
     // About Us Crud
     Route::get('/about-us/list', [AboutUsController::class, 'index'])->name('about.index');
     Route::get('/about-us/create/{id}', [AboutUsController::class, 'create'])->name('about.create');
@@ -80,4 +83,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/faq/create/{id}', [FaqController::class, 'create'])->name('faq.create');
     Route::post('/faq/submit/{id}', [FaqController::class, 'submit'])->name('faq.submit');
     Route::post('/faq/delete', [FaqController::class, 'delete'])->name('faq.delete');
+
 });

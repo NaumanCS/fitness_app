@@ -67,15 +67,15 @@
 <script src="{{ asset('admin') }}/assets/plugins/global/plugins.bundle.js"></script>
 <script src="{{ asset('admin') }}/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 <script src="{{ asset('admin') }}/assets/js/scripts.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <!--end::Global Theme Bundle-->
 <!--begin::Page Vendors(used by this page)-->
 {{-- <script src="{{asset('admin')}}/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script> --}}
-<script src="{{ asset('admin') }}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('admin') }}/assets/js/pages/widgets.js"></script>
 <!--end::Page Scripts-->
-<script src="{{ asset('admin') }}/assets/js/pages/crud/datatables/basic/paginations.js"></script>
+<script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.js"></script>
 
@@ -153,4 +153,33 @@
 </script>
 <script>
     $('.dropify').dropify();
+
+    $('.dropify-clear').on('click', function() {
+        var inputName = $('#logo').attr('name');
+        var id = $('#record_id').val();
+        alert(id);
+
+        $.ajax({
+            type: 'POST',
+            url: "/general/settings/delete_dropify_image",
+            data: {
+                'id': id,
+                'fieldName': inputName,
+                "_token": "{{ csrf_token() }}",
+            },
+            async: false,
+            success: function(data) {
+                console.log('removed');
+            },
+            error: function(data) {
+                swal("Error!", data, "danger");
+            }
+        });
+
+    })
+</script>
+<script>
+    $(document).ready(function() {
+        $('#kt_datatable').DataTable();
+    });
 </script>

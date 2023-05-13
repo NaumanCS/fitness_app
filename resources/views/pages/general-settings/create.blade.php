@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 @section('content')
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="content d-flex flex-column flex-column-fluid pt-0" id="kt_content">
         <div class="d-flex flex-column-fluid">
             <div class="container">
                 <div class="card card-custom">
@@ -14,7 +14,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
-                            <input type="hidden" value="{!! $obj->id ?? 0 !!}" name="id">
+                            <input type="hidden" value="{!! $obj->id ?? 0 !!}" id="record_id" name="id">
                             <div class="form-group">
                                 <label class="col-form-label col-lg-3 col-sm-12">Upload Navbar Logo</label>
                                 <div class="col-lg-4 col-12 mt-3">

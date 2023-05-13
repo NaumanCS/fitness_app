@@ -16,7 +16,6 @@ class GeneralSettingsController extends Controller
     public function submit(Request $request)
     {
         $id = $request->id;
-        $settings = new GeneralSettings;
         if ($request->file('logo')) {
             $logoImage = rand(9, 99999) . time() . '.' . $request->logo->extension();
             $request->logo->move(public_path('uploads/general-settings'), $logoImage);
@@ -32,5 +31,14 @@ class GeneralSettingsController extends Controller
             }
         }
         return redirect()->route('general.settings.create');
+    }
+
+    public function delete_dropify_image(Request $request){
+        if($request->id > 0){
+            $fieldName = $request->fieldName;
+            GeneralSettings::where('id', $request->id)->update([
+                $fieldName => null,
+            ]);
+        }
     }
 }
