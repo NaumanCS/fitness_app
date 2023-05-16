@@ -54,7 +54,7 @@
                     <!--begin::Signin-->
                     <div class="login-form">
                         <!--begin::Form-->
-                        <form class="form" id="kt_login_singin_form" method="POST" action="{{ route('login') }}">
+                        <form class="form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <!--begin::Form group-->
                             <div class="form-group">
