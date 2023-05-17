@@ -28,7 +28,7 @@
                                 <div></div>
                                 <div class="custom-file">
                                     <input type="file" name="image" class="custom-file-input" id="customFile"
-                                        value="{!! $obj->image ?? '' !!}" />
+                                        value="{{ $obj->image ?? '' }}" />
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
