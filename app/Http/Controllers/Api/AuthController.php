@@ -74,7 +74,7 @@ class AuthController extends Controller
         $data = User::where('id', $user->id)->with('goal', 'active', 'diet', 'intensity')->first();
 
         $token = rand(1000, 9999);
-        return ['status' => true, 'message' => 'Registration Successful', 'data' => $data];
+        return ['status' => true, 'message' => 'Registration Successful', 'data' => $data, 'access_token' => $user->createToken($request->email)->plainTextToken];
     }
 
     public function changePassword(Request $request)
@@ -85,14 +85,13 @@ class AuthController extends Controller
         ]);
 
         $user = auth()->user();
-        if (!Hash::check($request->password, $user->password)) {
-            return response(['status' => false, 'message' => 'Invalid email or password. Please try again'], 200);
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response(['status' => false, 'message' => 'Invalid old password. Please try again'], 200);
         } else {
             $user = User::where('id', $user->id)->update([
-                'password' => $request->new_password,
+                'password' => Hash::make($request->new_password),
             ]);
-
-            return response(['status' => true, 'message' => 'Password Updated Successfully', 'data' => $user], 200);
+            return response(['status' => true, 'message' => 'Password Updated Successfully', 'data' => auth()->user()], 200);
         }
     }
 }

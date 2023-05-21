@@ -15,44 +15,49 @@ class UserController extends Controller
 {
     public function update_profile(Request $request)
     {
+        $user = auth()->user();
+        $response = User::where('id', $user->id)->update($request->all());
+
+        if ($request->file()) {
+            $user = User::where('id', $user->id)->first();
+            $imageName = rand(9, 99999) . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/user'), $imageName);
+            $user->image = $imageName;
+            $response = $user->update();
+        }
+        if($response){
+            return ['status' => true, 'message' => 'Profile Updated Successfully', 'data' => $user];
+        }
+        else{
+            return ['status' => true, 'message' => 'Failed to update profile, try again.', 'data' => $user];
+        }
+    }
+
+    public function update_profile_picture(Request $request)
+    {
+        requestValidate($request, [
+            "image" => "required",
+        ]);
+
         $id = auth()->user()->id;
-        $user = User::where('id', $id)->with('diet')->first();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->phone = $request->phone;
-        $user->goal_id = $request->goal_id;
-        $user->gender = $request->gender;
-        $user->age = $request->age;
-        $user->date_of_birth = $request->date_of_birth;
-        $user->height = $request->height;
-        $user->height_unit = $request->height_unit;
-        $user->weight = $request->weight;
-        $user->weight_unit = $request->weight_unit;
-        $user->target_weight = $request->target_weight;
-        $user->target_weight_unit = $request->target_weight_unit;
-        $user->active_id = $request->active_id;
-        $user->intensity_id = $request->intensity_id;
-        $user->diet_id = $request->diet_id;
-
+        $user = User::where('id', $id)->first();
         if ($request->file()) {
             $imageName = rand(9, 99999) . '.' . $request->image->extension();
             $request->image->move(public_path('uploads/user'), $imageName);
             $user->image = $imageName;
         }
-
-        $user->update();
-        return ['status' => true, 'message' => 'Profile Updated Successfully', 'data' => $user];
+        $response = $user->update();
+        if($response){
+            return ['status' => true, 'message' => 'Profile picture updated successfully', 'data' => $user];
+        }
+        else{
+            return ['status' => false, 'message' => 'Failed to update profile picture', 'data' => $user];
+        }
     }
 
-    public function get_admin_settings()
+    public function get_user_profile()
     {
-        $aboutUs = AboutUs::get();
-        $policies = Policy::get();
-        $faqs = Faq::get();
-        $generalSettings = GeneralSettings::get();
-
-        return ['status' => true, 'message' => "Admin added data", 'aboutUs' => $aboutUs, 'policies' => $policies, 'faqs' => $faqs, 'generalSettings' => $generalSettings];
+        $user = auth()->user();
+        return ['status' => true, 'message' => 'User Profile Data', 'data' => $user];
     }
 }

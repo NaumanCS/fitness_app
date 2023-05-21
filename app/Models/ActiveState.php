@@ -13,10 +13,11 @@ class ActiveState extends Model
         'title', 'description', 'image',
     ];
 
-    public function getImageAttribute(){
+    public function getImageAttribute()
+    {
         if ($this->attributes['image'] == null) {
-        return '<img width="50px" src="'.asset('uploads/goals/default.jpg').'"/>';
+            return asset('uploads/goals/default.jpg');
         }
-        return '<img width="50px" src="'.asset('uploads/active-state'). '/'. $this->attributes['image'].'"/>';
+        return asset('uploads/active-state') . '/' . $this->attributes['image'];
     }
 }

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'role','password','phone_verified_at','image','email','phone','diet_id','intensity_id','active_id','target_weight_unit','target_weight','weight_unit','weight','height','age','gender','goal_id','name','date_of_birth'
+        'role', 'password', 'phone_verified_at', 'image', 'email', 'phone', 'diet_id', 'intensity_id', 'active_id', 'target_weight_unit', 'target_weight', 'weight_unit', 'weight', 'height', 'age', 'gender', 'goal_id', 'name', 'date_of_birth'
     ];
 
     /**
@@ -40,29 +40,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getImageAttribute(){
+    public function getImageAttribute()
+    {
         if ($this->attributes['image'] == null) {
-        return '<img width="50px" src="'.asset('uploads/user/default.jpg').'"/>';
+            return asset('uploads/goals/default.jpg');
         }
-        return '<img width="50px" src="'.asset('uploads/user'). '/'. $this->attributes['image'].'"/>';
+        return asset('uploads/user') . '/' . $this->attributes['image'];
     }
-
 
     public function diet()
     {
         return $this->hasOne(Diet::class, 'id', 'diet_id');
     }
 
-    public function intensity(){
+    public function intensity()
+    {
         return $this->hasOne(Intensity::class, 'id', 'intensity_id');
     }
 
-    public function active(){
+    public function active()
+    {
         return $this->hasOne(ActiveState::class, 'id', 'active_id');
     }
 
-    public function goal(){
+    public function goal()
+    {
         return $this->hasOne(Goals::class, 'id', 'goal_id');
     }
-
 }
