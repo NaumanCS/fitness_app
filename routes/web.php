@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DietController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FoodController;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\GoalsController;
 use App\Http\Controllers\IntensityController;
@@ -58,6 +59,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/active-state/create/{id}', [ActiveStateController::class, 'create'])->name('active.state.create');
     Route::post('/active-state/submit/{id}', [ActiveStateController::class, 'submit'])->name('active.state.submit');
     Route::post('/active-state/delete', [ActiveStateController::class, 'delete'])->name('active.state.delete');
+
+    // Food Crud
+    Route::get('/food/list', [FoodController::class, 'index'])->name('food.index');
+    Route::get('/food/create/{id}', [FoodController::class, 'create'])->name('food.create');
+    Route::post('/food/submit/{id}', [FoodController::class, 'submit'])->name('food.submit');
+    Route::post('/food/delete', [FoodController::class, 'delete'])->name('food.delete');
 
     // General Setting Crud
     Route::get('/general/settings', [GeneralSettingsController::class, 'create'])->name('general.settings.create');

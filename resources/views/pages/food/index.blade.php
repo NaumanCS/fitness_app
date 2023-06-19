@@ -10,7 +10,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">List of all active states added for the user</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">List of all foods added for the user</h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->
@@ -27,12 +27,11 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-4">
                         <div class="card-title">
-                            <h3 class="card-label">Active States</h3>
+                            <h3 class="card-label">Food</h3>
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Button-->
-                            <a href="{{ route('active.state.create', $update_id = 0) }}"
-                                class="btn btn-primary font-weight-bolder">
+                            <a href="{{route('food.create', $update_id=0)}}" class="btn btn-primary font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -46,7 +45,7 @@
                                         </g>
                                     </svg>
                                     <!--end::Svg Icon-->
-                                </span>Add New Active State</a>
+                                </span>Add New Food</a>
                             <!--end::Button-->
                         </div>
                     </div>
@@ -59,26 +58,27 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Calories</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($obj as $row)
-                                    <tr>
-                                        <td>{{ $row->id ?? "" }}</td>
-                                        <td><img src="{{ $row->image ?? "" }}" alt="Active Image" style="width: 50px;"></td>
-                                        <td>{{ $row->title ?? "" }}</td>
-                                        <td>{{ $row->description ?? "" }}</td>
-                                        <td class="d-flex" style="padding-bottom: 25px">
-                                            <a class="mx-2 pt-1" href="{{ route('active.state.create', $row->id) }}">
+                                <tr>
+                                    <td>{!! $row->id !!}</td>
+                                    <td><img src="{!! $row->image !!}" alt="food image" style="width: 50px"></td>
+                                    <td>{!! $row->title !!}</td>
+                                    <td>{!! $row->description !!}</td>
+                                    <td>{!! $row->calories !!}</td>
+                                    <td class="d-flex align-items-center" style="padding-bottom: 25px">
+                                            <a class="mx-2 pt-1" href="{{route('food.create', $row->id)}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="delete_action mx-2 pt-1" rel="{!! $row->id ?? '' !!}"
-                                                href="javascript:void(0)">
+                                            <a class="delete_action mx-2 pt-1" rel="{!!$row->id ?? '' !!}" href="javascript:void(0)">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -93,3 +93,4 @@
     </div>
     <!--end::Content-->
 @endsection
+

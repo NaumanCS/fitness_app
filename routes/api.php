@@ -26,12 +26,15 @@ Route::get('/all/intensities', [AdminSettings::class, 'get_intensities']);
 Route::get('/all/goals', [AdminSettings::class, 'get_goals']);
 Route::get('/all/diets', [AdminSettings::class, 'get_diets']);
 Route::get('/all/active-states', [AdminSettings::class, 'get_active_states']);
+Route::get('/food/list', [AdminSettings::class, 'get_food_list']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/change/password', [AuthController::class, 'changePassword']);
     Route::post('/update/profile', [UserController::class, 'update_profile']);
     Route::post('update/profile/picture', [UserController::class, 'update_profile_picture']);
     Route::get('/user/profile', [UserController::class, 'get_user_profile']);
+    Route::post('/update/goal', [UserController::class, 'update_goal']);
+    Route::post('/update/calories', [UserController::class, 'update_calories']);
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

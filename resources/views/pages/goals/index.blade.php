@@ -10,7 +10,8 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">All fitness goals list added in the app for users</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">All fitness goals list added in the app for users
+                        </h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->
@@ -31,7 +32,7 @@
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Button-->
-                            <a href="{{route('goals.create', $update_id=0)}}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('goals.create', $update_id = 0) }}" class="btn btn-primary font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -62,19 +63,20 @@
                             </thead>
                             <tbody>
                                 @foreach ($obj as $goal)
-                                <tr>
-                                    <td>{!! $goal->id !!}</td>
-                                    <td>{!! $goal->image !!}</td>
-                                    <td>{!! $goal->title !!}</td>
-                                    <td class="d-flex">
-                                            <a class="mx-2 pt-1" href="{{route('goals.create', $goal->id)}}">
+                                    <tr>
+                                        <td>{!! $goal->id !!}</td>
+                                        <td><img src="{!! $goal->image !!}" alt="Goal Image" style="width: 50px;"></td>
+                                        <td>{!! $goal->title !!}</td>
+                                        <td class="d-flex align-items-center" style="padding-bottom: 25px">
+                                            <a class="mx-2 pt-1" href="{{ route('goals.create', $goal->id) }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="delete_action mx-2 pt-1" rel="{!!$goal->id ?? '' !!}" href="javascript:void(0)">
+                                            <a class="delete_action mx-2 pt-1" rel="{!! $goal->id ?? '' !!}"
+                                                href="javascript:void(0)">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -89,4 +91,3 @@
     </div>
     <!--end::Content-->
 @endsection
-

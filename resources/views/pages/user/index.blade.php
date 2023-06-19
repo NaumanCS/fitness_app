@@ -31,6 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>Record ID</th>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
@@ -40,6 +41,7 @@
                                 @foreach ($obj as $row)
                                     <tr>
                                         <td>{!! $row->id !!}</td>
+                                        <td><img src="{!! $row->image !!}" alt="User Image" style="width: 50px;"></td>
                                         <td>{!! $row->name !!}</td>
                                         <td>{!! $row->email !!}</td>
                                         <td>{!! $row->phone !!}</td>
